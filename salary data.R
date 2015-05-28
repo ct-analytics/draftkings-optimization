@@ -3,9 +3,15 @@ library(dplyr)
 library(stringr)
 
 # dk.raw <- html("http://rotoguru1.com/cgi-bin/byday.pl?game=dd")
-dk.20150521 <- html("http://rotoguru1.com/cgi-bin/byday.pl?date=521&game=dd")
+month <- "5"
+day <- "21"
 
-dk.pitchers <- dk.20150521 %>%
+date.rotoguru <- paste(month,day,sep="")
+date <- as.Date(paste(month,day,"2015",sep="-"),"%m-%d-%Y")
+url <- paste("http://rotoguru1.com/cgi-bin/byday.pl?date=",date.rotoguru,"&game=dd",sep="")
+rotoguru <- html(url)
+
+dk.pitchers <- rotoguru %>%
   html_nodes("table") %>%
   .[[5]] %>%
    html_table(fill=TRUE) %>%
@@ -24,9 +30,7 @@ h <- hPlot(Salary ~ Player,
 h$tooltip(headerFormat= '<b>{point.x}</b><br>',
           pointFormat= 'Salary: ${point.y:,.0f}')
 h$yAxis(title=list(text="Salary"),labels=list(format='${value:,.0f}'))
-
-outf <- h$print()
-str(h)
-    output <- file("salary chart.txt")
-writeLines(h$print(),output)
-close(output)
+h$title(text=paste("Draft Kings Salaries for ",format(date,"%B %d, %Y"),sep=""))
+h$subtitle(text=paste('<i>Data from <a href="',url,' target="_blank"">RotoGuru</a></i>',sep=""),useHTML=TRUE)
+h$html()
+h
