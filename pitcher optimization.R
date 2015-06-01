@@ -1,3 +1,8 @@
+pitchers <- inner_join(dk.pitchers,gs.pitchers,by=c("Player"="Name")) %>%
+  mutate(GS = as.numeric(GS),
+         value = Salary / GS) %>%
+  arrange(value)
+
 library(lpSolve)
 library(lpSolveAPI)
 
@@ -25,60 +30,69 @@ set.type(ip,seq(1,nrow(pitchers)),type="binary")
 set.objfn(ip,pitchers$GS)
 lp.control(ip,sense="max")
 
-write.lp(ip,"pitcher_optimization.txt",type="lp")
-
 dimnames(ip) <- list(c("Number.Players","Salary"),
                      pitchers$Player)
+write.lp(ip,"pitcher_optimization.txt",type="lp")
 
-solve(ip)
-get.objective(ip)
-get.variables(ip)
+solution.status <- solve(ip)
+status <- c("0"="optimal solution found",
+            "1"="the model is sub-optimal",
+            "2"="the model is infeasible",
+            "3"="the model is unbounded",
+            "4"="the model is degenerate",
+            "5"="numerical failure encountered",
+            "6"="process aborted",
+            "7"="timeout",
+            "9"="the model was solved by presolve",
+            "10"="the branch and bound routine failed",
+            "11"="the branch and bound was stopped because of a break-at-first or break-at-value",
+            "12"="a feasible branch and bound solution was found",
+            "13"="no feasible branch and bound solution was found")
 
-get.constraints(ip)
+cat(paste("IP Solved with status: ",status[as.character(solution.status)],"\n",sep=""))
 
-pitchers$Player[as.logical(get.variables(ip))]
+cat(paste("Optimal game score value: ",get.objective(ip),"\n",sep=""))
+
+cat(paste("Salary used: ",paste("$",format(get.constraints(ip)[2],big.mark=","),sep=""),"\n",sep=""))
+
+cat(paste("Pitchers selected: ",paste(pitchers$Player[as.logical(get.variables(ip))],collapse="\n"),sep="\n"))
 pitchers$select <- as.factor(get.variables(ip))
 
 write.csv(pitchers,"pitchers.csv")
-
-library(ggplot2)
-library(scales)
-library(RColorBrewer)
-
-ggplot(data=pitchers,aes(x=GS,y=Salary,group=select),alpha=abs(select-.2)) +
-#   geom_point() +
-  geom_text(aes(label=Player,color=select),size=3) +
-  scale_y_continuous(labels = dollar) +
-  scale_color_discrete(guide=F)
 
 library(rCharts)
 
 pitchers$colors[pitchers$select==1] <- "#66CC99"
 pitchers$colors[pitchers$select==0] <- "#CC6666"
 
-h <- hPlot(Salary ~ GS, data = pitchers, 
-      type = c("scatter"), group = "Player", size = 3)
-# h$tooltip(formatter = "#! function() { return this.name + ', ' + this.x + ', ' + this.y; } !#")
-h$tooltip(headerFormat= '<b>{series.name}</b><br>',
-          pointFormat= 'Game Score: {point.x}<br>Salary: ${point.y:,.0f}')
-# var salary = '$' + point.y.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-h$chart(zoomType = "xy")
+h <- rCharts::Highcharts$new()
+selected <- pitchers %>%
+  filter(select == 1)
+for (i in 1:nrow(selected)) {
+  s.tmp <- list(name=selected$Player[i],x=selected$GS[i],y=selected$Salary[i])
+  if (i==1)
+    s <- list(s.tmp)
+  else
+    s <- c(s,list(s.tmp))
+}
+notselected <- pitchers %>%
+  filter(select != 1)
+for (i in 1:nrow(notselected)) {
+  ns.tmp <- list(name=notselected$Player[i],x=notselected$GS[i],y=notselected$Salary[i])
+  if (i==1)
+    ns <- list(ns.tmp)
+  else
+    ns <- c(ns,list(ns.tmp))
+}
+h$series(data = s,name="Selected",type="scatter",marker=list(radius=3))
+h$series(data = ns,name="Not Selected",type="scatter",marker=list(radius=3))
+h$tooltip(headerFormat="",
+  pointFormat='<b>{point.name}</b><br>Game Score: {point.x}<br>Salary: ${point.y:,.0f}')
 h$plotOptions(scatter = list(marker = list(symbol = 'circle')))
 h$legend(align = 'right', verticalAlign = 'bottom', layout = 'vertical'
-          ,x= -30,y= -60,floating= TRUE,enabled=FALSE)
-# h$colors(pitchers$colors)
+         ,x= -30,y= -60,floating= TRUE,enabled=TRUE)
 h$yAxis(title=list(text="Salary"),labels=list(format='${value:,.0f}'))
 h$xAxis(title=list(text="Game Score"))
 h$title(text="Draft Kings Optimization")
+h$chart(zoomType = "xy")
 h
-  
-library(plyr)
-l <- dlply(select(pitchers,x=GS,y=Salary,color=colors),1,c)
-a <- rCharts::Highcharts$new()
-for(i in l) {
-  a$series(data = i, type = "scatter", name = pitchers$Player[match(i,l)])
-}
-a$xAxis(title = list(text = "Game Score"))
-a$yAxis(title = list(text = "Salary"))
-# a$legend(enabled = F)
-a

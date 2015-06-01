@@ -1,36 +1,42 @@
 /* Objective function */
-max: +59 C1 +50 C2 +50 C3 +50 C4 +49 C5 +52 C6 +45 C7 +46 C8 +42 C9 +47 C10 +51 C11 +51 C12 +41 C13 +55 C14
- +42 C15 +52 C16 +68 C17 +79 C18 +52 C19 +59 C20 +62 C21 +64 C22;
+max: +59 Jesse Chavez +50 Kyle Hendricks +50 Alex Colome +50 Jaime Garcia +49 Odrisamer Despaigne +52 Archie Bradley
+ +45 Wandy Rodriguez +46 R.A. Dickey +42 Jerome Williams +47 Chris Tillman +51 Matt Garza +51 Mat Latos
+ +41 John Danks +55 Julio Teheran +42 Scott Feldman +52 Matt Shoemaker +68 Madison Bumgarner +79 Clayton Kershaw
+ +52 Clay Buchholz +59 Jacob deGrom +62 David Price +64 Danny Salazar;
 
 /* Constraints */
-+C1 +C2 +C3 +C4 +C5 +C6 +C7 +C8 +C9 +C10 +C11 +C12 +C13 +C14 +C15 +C16 +C17 +C18 +C19 +C20 +C21 +C22 <= 2;
-+8500 C1 +8500 C2 +8500 C3 +8500 C4 +8500 C5 +9300 C6 +8500 C7 +8800 C8 +8500 C9 +9750 C10 +11350 C11
- +11800 C12 +9500 C13 +13500 C14 +10900 C15 +13750 C16 +18100 C17 +21050 C18 +14000 C19 +16350 C20 +17300 C21
- +18600 C22 <= 25000;
+Number.Players: +Jesse Chavez +Kyle Hendricks +Alex Colome +Jaime Garcia +Odrisamer Despaigne +Archie Bradley +Wandy Rodriguez
+ +R.A. Dickey +Jerome Williams +Chris Tillman +Matt Garza +Mat Latos +John Danks +Julio Teheran +Scott Feldman
+ +Matt Shoemaker +Madison Bumgarner +Clayton Kershaw +Clay Buchholz +Jacob deGrom +David Price +Danny Salazar <= 2;
+Salary: +8500 Jesse Chavez +8500 Kyle Hendricks +8500 Alex Colome +8500 Jaime Garcia +8500 Odrisamer Despaigne
+ +9300 Archie Bradley +8500 Wandy Rodriguez +8800 R.A. Dickey +8500 Jerome Williams +9750 Chris Tillman
+ +11350 Matt Garza +11800 Mat Latos +9500 John Danks +13500 Julio Teheran +10900 Scott Feldman +13750 Matt Shoemaker
+ +18100 Madison Bumgarner +21050 Clayton Kershaw +14000 Clay Buchholz +16350 Jacob deGrom +17300 David Price
+ +18600 Danny Salazar <= 25000;
 
 /* Variable bounds */
-C1 <= 1;
-C2 <= 1;
-C3 <= 1;
-C4 <= 1;
-C5 <= 1;
-C6 <= 1;
-C7 <= 1;
-C8 <= 1;
-C9 <= 1;
-C10 <= 1;
-C11 <= 1;
-C12 <= 1;
-C13 <= 1;
-C14 <= 1;
-C15 <= 1;
-C16 <= 1;
-C17 <= 1;
-C18 <= 1;
-C19 <= 1;
-C20 <= 1;
-C21 <= 1;
-C22 <= 1;
+Jesse Chavez <= 1;
+Kyle Hendricks <= 1;
+Alex Colome <= 1;
+Jaime Garcia <= 1;
+Odrisamer Despaigne <= 1;
+Archie Bradley <= 1;
+Wandy Rodriguez <= 1;
+R.A. Dickey <= 1;
+Jerome Williams <= 1;
+Chris Tillman <= 1;
+Matt Garza <= 1;
+Mat Latos <= 1;
+John Danks <= 1;
+Julio Teheran <= 1;
+Scott Feldman <= 1;
+Matt Shoemaker <= 1;
+Madison Bumgarner <= 1;
+Clayton Kershaw <= 1;
+Clay Buchholz <= 1;
+Jacob deGrom <= 1;
+David Price <= 1;
+Danny Salazar <= 1;
 
 /* Integer definitions */
-int C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22;
+int Jesse Chavez,Kyle Hendricks,Alex Colome,Jaime Garcia,Odrisamer Despaigne,Archie Bradley,Wandy Rodriguez,R.A. Dickey,Jerome Williams,Chris Tillman,Matt Garza,Mat Latos,John Danks,Julio Teheran,Scott Feldman,Matt Shoemaker,Madison Bumgarner,Clayton Kershaw,Clay Buchholz,Jacob deGrom,David Price,Danny Salazar;
