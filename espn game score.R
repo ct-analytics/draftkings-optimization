@@ -31,5 +31,5 @@ h$tooltip(headerFormat= '<b>{point.x}</b><br>',
 h$yAxis(title=list(text="Game Score"),labels=list(format='{value:.0f}'))
 h$title(text=paste("Game Score for ",format(date,"%B %d, %Y"),sep=""))
 h$subtitle(text=paste('<i>Data from <a href="',url,' target="_blank"">ESPN</a></i>',sep=""),useHTML=TRUE)
-h$html()
+h$save()
 h

@@ -21,12 +21,12 @@
   </head>
   <body >
     
-    <div id = 'chartb9a363e26014' class = 'rChart highcharts'></div>    
+    <div id = 'chartb9a316ba4f7a' class = 'rChart highcharts'></div>    
     <script type='text/javascript'>
     (function($){
         $(function () {
             var chart = new Highcharts.Chart({
- "dom": "chartb9a363e26014",
+ "dom": "chartb9a316ba4f7a",
 "width":            800,
 "height":            400,
 "credits": {
@@ -37,15 +37,15 @@
  "enabled": false 
 },
 "title": {
- "text": "WAR as of May 21, 2015" 
+ "text": "Pitcher Game Score for May 21, 2015" 
 },
 "yAxis": [
  {
  "title": {
- "text": "WAR" 
+ "text": "Game Score" 
 },
 "labels": {
- "format": "{value:.1f}" 
+ "format": "{value:.0f}" 
 } 
 } 
 ],
@@ -54,63 +54,63 @@
  "data": [
  [
  "Alex Colome",
-           0.4 
+            50 
 ],
 [
- "Chris Tillman",
-           0.2 
+ "Archie Bradley",
+            52 
 ],
 [
  "Clay Buchholz",
-           1.2 
+            52 
 ],
 [
  "Clayton Kershaw",
-           1.7 
+            79 
 ],
 [
  "Danny Salazar",
-           0.8 
+            64 
 ],
 [
  "David Price",
-           1.4 
-],
-[
- "J.A. Happ",
-           0.9 
+            62 
 ],
 [
  "Jacob deGrom",
-           1.3 
+            59 
+],
+[
+ "Jaime Garcia",
+            50 
 ],
 [
  "Jesse Chavez",
-           1.3 
+            59 
 ],
 [
- "Jorge de la Rosa",
-           0.5 
+ "Julio Teheran",
+            55 
 ],
 [
  "Kyle Hendricks",
-           0.8 
+            50 
 ],
 [
  "Madison Bumgarner",
-             1 
+            68 
 ],
 [
  "Mat Latos",
-           0.6 
+            51 
 ],
 [
- "Scott Feldman",
-           0.6 
+ "Matt Garza",
+            51 
 ],
 [
- "Wandy Rodriguez",
-           0.4 
+ "Matt Shoemaker",
+            52 
 ] 
 ],
 "type": "bar",
@@ -127,20 +127,20 @@
  "title": {
  "text": "Name" 
 },
-"categories": [ "Alex Colome", "Chris Tillman", "Clay Buchholz", "Clayton Kershaw", "Danny Salazar", "David Price", "J.A. Happ", "Jacob deGrom", "Jesse Chavez", "Jorge de la Rosa", "Kyle Hendricks", "Madison Bumgarner", "Mat Latos", "Scott Feldman", "Wandy Rodriguez" ] 
+"categories": [ "Alex Colome", "Archie Bradley", "Clay Buchholz", "Clayton Kershaw", "Danny Salazar", "David Price", "Jacob deGrom", "Jaime Garcia", "Jesse Chavez", "Julio Teheran", "Kyle Hendricks", "Madison Bumgarner", "Mat Latos", "Matt Garza", "Matt Shoemaker" ] 
 } 
 ],
 "subtitle": {
- "text": "<i>Data from <a href=\"http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=0&type=3&season=2015&month=0&season1=2015&ind=0&team=0&rost=0&age=0&filter=&players=p2015-05-21page=1_30 target=\"_blank\"\">Fangraphs</a></i>",
+ "text": "<i>Data from <a href=\"http://sports.espn.go.com/fantasy/baseball/flb/dailynotes?page=mlbnotes150521 target=\"_blank\"\">ESPN</a></i>",
 "useHTML": true 
-},
-"id": "chartb9a363e26014",
-"chart": {
- "renderTo": "chartb9a363e26014" 
 },
 "tooltip": {
  "headerFormat": "<b>{point.x}</b><br>",
-"pointFormat": "WAR: {point.y:.1f}" 
+"pointFormat": "Game Score: {point.y:.0f}" 
+},
+"id": "chartb9a316ba4f7a",
+"chart": {
+ "renderTo": "chartb9a316ba4f7a" 
 } 
 });
         });
