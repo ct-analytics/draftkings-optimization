@@ -21,12 +21,12 @@
   </head>
   <body >
     
-    <div id = 'chartb9a363e26014' class = 'rChart highcharts'></div>    
+    <div id = 'chartb9a331fa6b79' class = 'rChart highcharts'></div>    
     <script type='text/javascript'>
     (function($){
         $(function () {
             var chart = new Highcharts.Chart({
- "dom": "chartb9a363e26014",
+ "dom": "chartb9a331fa6b79",
 "width":            800,
 "height":            400,
 "credits": {
@@ -37,111 +37,180 @@
  "enabled": false 
 },
 "title": {
- "text": "WAR as of May 21, 2015" 
+ "text": "Draft Kings Optimization" 
 },
 "yAxis": [
  {
  "title": {
- "text": "WAR" 
+ "text": "Salary" 
 },
 "labels": {
- "format": "{value:.1f}" 
+ "format": "${value:,.0f}" 
 } 
 } 
 ],
 "series": [
  {
  "data": [
- [
- "Alex Colome",
-           0.4 
+ {
+ "name": "Jesse Chavez",
+"x":             59,
+"y":           8500 
+},
+{
+ "name": "Jacob deGrom",
+"x":             59,
+"y":          16350 
+} 
 ],
-[
- "Chris Tillman",
-           0.2 
+"name": "Selected",
+"type": "scatter",
+"marker": {
+ "radius":              3 
+} 
+},
+{
+ "data": [
+ {
+ "name": "Kyle Hendricks",
+"x":             50,
+"y":           8500 
+},
+{
+ "name": "Alex Colome",
+"x":             50,
+"y":           8500 
+},
+{
+ "name": "Jaime Garcia",
+"x":             50,
+"y":           8500 
+},
+{
+ "name": "Odrisamer Despaigne",
+"x":             49,
+"y":           8500 
+},
+{
+ "name": "Archie Bradley",
+"x":             52,
+"y":           9300 
+},
+{
+ "name": "Wandy Rodriguez",
+"x":             45,
+"y":           8500 
+},
+{
+ "name": "R.A. Dickey",
+"x":             46,
+"y":           8800 
+},
+{
+ "name": "Jerome Williams",
+"x":             42,
+"y":           8500 
+},
+{
+ "name": "Chris Tillman",
+"x":             47,
+"y":           9750 
+},
+{
+ "name": "Matt Garza",
+"x":             51,
+"y":          11350 
+},
+{
+ "name": "Mat Latos",
+"x":             51,
+"y":          11800 
+},
+{
+ "name": "John Danks",
+"x":             41,
+"y":           9500 
+},
+{
+ "name": "Julio Teheran",
+"x":             55,
+"y":          13500 
+},
+{
+ "name": "Scott Feldman",
+"x":             42,
+"y":          10900 
+},
+{
+ "name": "Matt Shoemaker",
+"x":             52,
+"y":          13750 
+},
+{
+ "name": "Madison Bumgarner",
+"x":             68,
+"y":          18100 
+},
+{
+ "name": "Clayton Kershaw",
+"x":             79,
+"y":          21050 
+},
+{
+ "name": "Clay Buchholz",
+"x":             52,
+"y":          14000 
+},
+{
+ "name": "David Price",
+"x":             62,
+"y":          17300 
+},
+{
+ "name": "Danny Salazar",
+"x":             64,
+"y":          18600 
+} 
 ],
-[
- "Clay Buchholz",
-           1.2 
-],
-[
- "Clayton Kershaw",
-           1.7 
-],
-[
- "Danny Salazar",
-           0.8 
-],
-[
- "David Price",
-           1.4 
-],
-[
- "J.A. Happ",
-           0.9 
-],
-[
- "Jacob deGrom",
-           1.3 
-],
-[
- "Jesse Chavez",
-           1.3 
-],
-[
- "Jorge de la Rosa",
-           0.5 
-],
-[
- "Kyle Hendricks",
-           0.8 
-],
-[
- "Madison Bumgarner",
-             1 
-],
-[
- "Mat Latos",
-           0.6 
-],
-[
- "Scott Feldman",
-           0.6 
-],
-[
- "Wandy Rodriguez",
-           0.4 
-] 
-],
-"type": "bar",
+"name": "Not Selected",
+"type": "scatter",
 "marker": {
  "radius":              3 
 } 
 } 
 ],
+"tooltip": {
+ "headerFormat": "",
+"pointFormat": "<b>{point.name}</b><br>Game Score: {point.x}<br>Salary: ${point.y:,.0f}" 
+},
+"plotOptions": {
+ "scatter": {
+ "marker": {
+ "symbol": "circle" 
+} 
+} 
+},
 "legend": {
- "enabled": false 
+ "align": "right",
+"verticalAlign": "bottom",
+"layout": "vertical",
+"x":            -30,
+"y":            -60,
+"floating": true,
+"enabled": true 
 },
 "xAxis": [
  {
  "title": {
- "text": "Name" 
-},
-"categories": [ "Alex Colome", "Chris Tillman", "Clay Buchholz", "Clayton Kershaw", "Danny Salazar", "David Price", "J.A. Happ", "Jacob deGrom", "Jesse Chavez", "Jorge de la Rosa", "Kyle Hendricks", "Madison Bumgarner", "Mat Latos", "Scott Feldman", "Wandy Rodriguez" ] 
+ "text": "Game Score" 
+} 
 } 
 ],
-"subtitle": {
- "text": "<i>Data from <a href=\"http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=0&type=3&season=2015&month=0&season1=2015&ind=0&team=0&rost=0&age=0&filter=&players=p2015-05-21page=1_30 target=\"_blank\"\">Fangraphs</a></i>",
-"useHTML": true 
-},
-"id": "chartb9a363e26014",
 "chart": {
- "renderTo": "chartb9a363e26014" 
+ "zoomType": "xy",
+"renderTo": "chartb9a331fa6b79" 
 },
-"tooltip": {
- "headerFormat": "<b>{point.x}</b><br>",
-"pointFormat": "WAR: {point.y:.1f}" 
-} 
+"id": "chartb9a331fa6b79" 
 });
         });
     })(jQuery);

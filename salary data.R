@@ -16,8 +16,9 @@ dk.pitchers <- rotoguru %>%
   .[[5]] %>%
    html_table(fill=TRUE) %>%
   mutate(Player = str_replace(X2,"\\^\\d",""),
-         Salary = as.numeric(str_replace_all(X4,"\\$|,",""))) %>%
-  select(Player,Salary) %>%
+         Salary = as.numeric(str_replace_all(X4,"\\$|,","")),
+         Points = as.numeric(X3)) %>%
+  select(Player,Salary,Points) %>%
   filter(!(is.na(Salary)))
 
 
