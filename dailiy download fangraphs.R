@@ -131,3 +131,6 @@ d <- lapply(seq_along(positions),function(x) {
     select(-`#`,-`BB%`,-`K%`)
   return(fg)
 })
+
+library(data.table)
+d.full <- rbindlist(d)
