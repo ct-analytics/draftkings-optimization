@@ -3,7 +3,7 @@ library(dplyr)
 library(stringr)
 library(data.table)
 
-start.date <- as.Date("06-01-2015","%m-%d-%Y")
+start.date <- as.Date("05-01-2015","%m-%d-%Y")
 today <- Sys.Date()
 days.to.retrieve <- seq(start.date,today,"day")
 
@@ -19,10 +19,12 @@ dk.full <- lapply(days.to.retrieve,function(d) {
     mutate(Player = str_replace(X2,"\\^\\d",""),
            Salary = as.numeric(str_replace_all(X4,"\\$|,","")),
            Points = as.numeric(X3),
-           Date = date) %>%
+           Date = d) %>%
     select(Player,Date,Salary,Points) %>%
     filter(!(is.na(Salary)))
   return(dk)
 })
 
-draftkings <- rbindlist(dk.full)
+draftkings <- as.data.frame(rbindlist(dk.full))
+
+rm(dk.full,days.to.retrieve,start.date,today)
